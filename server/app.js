@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express      = require('express');
 const path         = require('path');
 const favicon      = require('serve-favicon');
@@ -8,7 +9,9 @@ const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 
 
-mongoose.connect('mongodb://localhost/server');
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected to DB!'))
+  .catch(err => console.error(console, err))
 
 const app = express();
 
@@ -17,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Products store';
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -28,8 +31,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
-const index = require('./routes/index');
-app.use('/', index);
+const routes = require('./routes/index');
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
