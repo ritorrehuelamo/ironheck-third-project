@@ -1,55 +1,72 @@
 require('dotenv').config()
-const express      = require('express');
-const path         = require('path');
-const favicon      = require('serve-favicon');
-const logger       = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser   = require('body-parser');
-const layouts      = require('express-ejs-layouts');
-const mongoose     = require('mongoose');
+const express = require('express')
+const path = require('path')
+const favicon = require('serve-favicon')
+const session    = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const logger = require('morgan')
+const passport   = require('passport')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const debug = require('debug')("app:"+path.basename(__filename).split('.')[0])
+const mongoose = require('mongoose')
+const cors = require('cors')
 
+const rootRouter = require('./routes/index')
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Connected to DB!'))
-  .catch(err => console.error(console, err))
+const app = express()
 
-const app = express();
+require('./config/dbConfig')
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const whiteList = [
+  'http://localhost:4200'
+]
 
-// default value for title local
-app.locals.title = 'Products store';
+const corsOptions = {
+  origin: function (origin, callback){
+    const originIsWhitelisted = whiteList.indexOf(origin) !== -1
+    callback(null, originIsWhitelisted)
+  },
+  credentials: true
+}
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(layouts);
+app.use(cors(corsOptions))
 
-const routes = require('./routes/index');
-app.use('/', routes);
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
 
-// error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(session({
+  secret: 'angular auth passport secret shh',
+  resave: true,
+  saveUninitialized: true,
+  cookie : { httpOnly: true, maxAge: 60*60*24*365 },
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+require('./passport/serializers');
+require('./passport/local');
+app.use(passport.initialize());
+app.use(passport.session());
 
-module.exports = app;
+app.use('/', rootRouter)
+
+app.use(function(req, res, next) {
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
+
+app.use(function(err, req, res, next) {
+  res.locals.message = err.message
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
+  res.status(err.status || 500)
+  res.render('error')
+})
+
+module.exports = app
