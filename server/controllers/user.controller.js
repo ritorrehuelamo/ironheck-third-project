@@ -37,7 +37,6 @@ module.exports = {
     .catch(e => res.status(500).json({message: `Error updating user -> ${e}`}))
   },
   deleteUser: (req, res, next) => {
-    console.log('ENTRA')
     User.findByIdAndRemove(req.params.id)
     .then(() => res.status(200).json({message: 'User removed'}))
     .catch( e => res.status(500).json({message: `Error when trying to delete user -> ${e}`}))

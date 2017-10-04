@@ -12,7 +12,7 @@ const debug = require('debug')("app:"+path.basename(__filename).split('.')[0])
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-const rootRouter = require('./routes/index')
+const rootRouter = require('./routes/')
 
 const app = express()
 

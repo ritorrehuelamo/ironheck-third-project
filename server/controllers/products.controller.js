@@ -3,20 +3,13 @@ const Product = require('../models/Product')
 module.exports = {
   getAll: (req, res, next) => {
     Product.find({}).populate('producer')
-    .then(products => {
-      res.status(200).json(products)
-    }).catch(e => {
-      debug(`Error getting all products -> ${e}`)
-      res.status(500).json({message: 'Error getting all products'})
-    })
+    .then(products => res.status(200).json(products))
+    .catch(e => res.status(500).json({message: 'Error getting all products'}))
   },
   getOne: (req, res, next) => {
     Product.findById(req.params.id).populate('producer')
     .then(product => res.status(200).json(product))
-    .catch(e => {
-      debug(`Error rendering single product -> ${e}`)
-      res.status(500).json({message: 'Error rendering a single product'})
-    }) 
+    .catch(e => res.status(500).json({message: 'Error rendering a single product'})) 
   },
   newProduct: (req, res, next) => {
     const {name, producer, ecological, description} = req.body
@@ -26,10 +19,7 @@ module.exports = {
     }).save()
     .then(product => {
       res.status(200).json(product)
-    }).catch(e => {
-      debug(`Error creating a product -> ${e}`)
-      res.status(500).json({message: 'Something went wrong'})
-    })
+    }).catch(e => res.status(500).json({message: 'Something went wrong'}))
   },
   editProduct: (req, res, next) => {
     const {name, price, ecological, description} = req.body
@@ -41,10 +31,7 @@ module.exports = {
       'description': description
     }},{new: true}).exec()
     .then(product => res.status(200).json(product))
-    .catch(e => {
-      debug(`Error trying to update product -> ${e}`)
-      res.status(500).json({message: 'Error trying to update product'})
-    })
+    .catch(e => res.status(500).json({message: 'Error trying to update product'}))
   },
   deleteProduct: (req, res, next) => {
     Product.findByIdAndRemove({_id: req.params.id})

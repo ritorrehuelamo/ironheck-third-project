@@ -1,10 +1,18 @@
-import { IsLoggedInService } from './is-logged-in.service';
-import { environment } from './../../environments/environment';
-import { Injectable, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
+import {
+  Injectable,
+  EventEmitter
+} from '@angular/core';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  Http
+} from '@angular/http';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs';
-import { Observable } from 'rxjs/Observable';
+import {
+  environment
+} from '../../environments/environment';
 
 const BASEURL = environment.BASEURL + '/api';
 
@@ -12,13 +20,16 @@ const BASEURL = environment.BASEURL + '/api';
 export class AuthService {
 
   private user: object;
-  private userLoginEvent: EventEmitter<any> = new EventEmitter<any>();
-  private options = {withCredentials: true};
+  private userLoginEvent: EventEmitter < any > = new EventEmitter < any > ();
+  private options = {
+    withCredentials: true
+  };
+
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
   }
 
-  public getLogginEventEmmiter(): EventEmitter<any> {
+  public getLoginEventEmitter(): EventEmitter < any > {
     return this.userLoginEvent;
   }
 
@@ -32,35 +43,41 @@ export class AuthService {
     return user;
   }
 
-  private handlerError(e) {
+  private handleError(e) {
     return Observable.throw(e.json().message);
   }
 
   signup(username, password) {
-    return this.http.post(`${BASEURL}/signup`, {username, password}, this.options)
+    return this.http.post(`${BASEURL}/signup`, {
+        username,
+        password
+      }, this.options)
       .map(res => res.json())
       .map(user => this.emitUserLoginEvent(user))
-      .catch(this.handlerError);
+      .catch(this.handleError);
   }
 
   login(username, password) {
-    return this.http.post(`${BASEURL}/login`, {username, password}, this.options)
+    return this.http.post(`${BASEURL}/login`, {
+        username,
+        password
+      }, this.options)
       .map(res => res.json())
       .map(user => this.emitUserLoginEvent(user))
-      .catch(this.handlerError);
+      .catch(this.handleError);
   }
 
   logout() {
-    return this.http.get(`${BASEURL}/logoug`, this.options)
+    return this.http.get(`${BASEURL}/logout`, this.options)
       .map(res => res.json())
       .map(user => this.emitUserLoginEvent(null))
-      .catch(this.handlerError);
+      .catch(this.handleError);
   }
 
   isLoggedIn() {
     return this.http.get(`${BASEURL}/loggedin`, this.options)
       .map(res => res.json())
       .map(user => this.emitUserLoginEvent(user))
-      .catch(this.handlerError);
+      .catch(this.handleError);
   }
 }

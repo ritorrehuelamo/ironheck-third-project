@@ -1,9 +1,7 @@
 const express = require('express')
-const path = require('path')
-const debug = require('debug')("app:"+path.basename(__filename).split('.')[0])
-const authController = require('../../controllers/auth.controller')
-
 const authRoutes = express.Router()
+
+const authController = require('../../controllers/auth.controller')
 
 authRoutes.post('/signup', authController.signup)
 authRoutes.post('/login', authController.login)
