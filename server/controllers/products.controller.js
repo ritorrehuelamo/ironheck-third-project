@@ -21,7 +21,6 @@ module.exports = {
   newProduct: (req, res, next) => {
     const {name, producer, ecological, description} = req.body
     const price = parseFloat(req.body.price).toFixed(2)
-  
     const newProduct = new Product({
       name, producer, price, ecological, description
     }).save()
@@ -50,9 +49,6 @@ module.exports = {
   deleteProduct: (req, res, next) => {
     Product.findByIdAndRemove({_id: req.params.id})
       .then(() => res.status(200).json({message: 'Product removed'}))
-      .catch(e => {
-        debug(`Error when try to delete the product -> ${e}`)
-        res.status(500).json('Error when you try to delete the product')
-      })
+      .catch(e => res.status(500).json('Error when you try to delete the product'))
   }
 }
