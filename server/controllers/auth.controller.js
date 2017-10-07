@@ -35,7 +35,7 @@ module.exports = {
   login: (req, res, next) => {
     passport.authenticate('local', (err, user, failureDetails) => {
       if(err) return res.status(500).json({message: 'Something went wrong'})
-      if(!user) return res.status(401).json(failureDetails)
+      if(!user) return res.status(401).json({message: 'Username does not exist'})
       req.login(user, (err) => {
         if(err) return res.status(500).json({message: 'Something went wrong'})
         res.status(200).json(req.user)
@@ -48,6 +48,7 @@ module.exports = {
     res.status(403).json({message: 'Unauthorized'})
   },
   logout: (req, res, next) => {
+    console.log("ME CAGO EN JUDAS")
     req.logout()
     res.status(200).json({message: 'Success'})
   }

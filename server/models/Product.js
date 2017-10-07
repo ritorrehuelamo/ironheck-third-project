@@ -5,6 +5,7 @@ const productSchema = new Schema({
   name: {type: String, required: true},
   producer: {type: Schema.Types.ObjectId, ref: 'User'},
   price: {type: Number, required: true},
+  productType: {type: String, required: false},
   ecological: {type: Boolean, required: true},
   description: String,
   image: {type: String, default: ''}

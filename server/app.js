@@ -18,9 +18,7 @@ const app = express()
 
 require('./config/dbConfig')
 
-const whiteList = [
-  'http://localhost:4200'
-]
+const whiteList = ['http://localhost:4200']
 
 const corsOptions = {
   origin: function (origin, callback){
@@ -42,11 +40,11 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({
-  secret: 'angular auth passport secret shh',
+  secret: 'LocalMarket',
   resave: true,
   saveUninitialized: true,
   cookie : { httpOnly: true, maxAge: 60*60*24*365 },
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  // store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
 require('./passport/serializers');
