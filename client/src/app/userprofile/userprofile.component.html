@@ -1,0 +1,31 @@
+<div *ngIf="!user">
+  <h2>NO USER LOGGED IN</h2>
+</div>
+
+<div *ngIf="user">
+  <h2 style="text-align: center;"> You are now logged in as {{ user.username }}!! </h2>
+  <!-- <pre> {{ user | json }} </pre> -->
+  <div class="row">
+    <div class="col-sm-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation">
+          <a (click)="setComponent('account')">Account</a>
+        </li>
+        <li role="presentation">
+          <a (click)="setComponent('password')">Profile</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="component == 'account'">
+          <app-account></app-account>
+      </div>
+      <div *ngIf="component == 'password'">
+          <app-password></app-password>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <a class="btn btn-primary left" (click)="saveChanges()">Save Changes</a>
+    </div>
+  </div>
+</div>

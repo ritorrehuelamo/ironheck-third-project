@@ -44,7 +44,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie : { httpOnly: true, maxAge: 60*60*24*365 },
-  // store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
 require('./passport/serializers');

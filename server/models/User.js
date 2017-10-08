@@ -13,8 +13,8 @@ const userSchema = new Schema({
   userType: {type: String, enum: ['provider', 'client']},
   companyName: {type: String, default: ''},
   productionType: {type: String, default: ''},
-  seasonStarts: {type: Date, default: Date.now},
-  seasonEnds: {type: Date, default: Date.now}
+  seasonStarts: {type: Date},
+  seasonEnds: {type: Date}
 },{
   timestamps: {
     createdAt: 'created_at',

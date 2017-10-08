@@ -11,7 +11,11 @@ import { RouterModule } from '@angular/router';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
 import {routes} from './routes';
 import { SignupformComponent } from './signupform/signupform.component';
-import { MenuHeaderComponent } from './menu-header/menu-header.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ProductsComponent } from './products/products.component';
+import { AccountComponent } from './userprofile/account/account.component';
+import { PasswordComponent } from './userprofile/password/password.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { MenuHeaderComponent } from './menu-header/menu-header.component';
     HomeComponent,
     UserprofileComponent,
     SignupformComponent,
-    MenuHeaderComponent
+    TruncatePipe,
+    FilterPipe,
+    ProductsComponent,
+    AccountComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

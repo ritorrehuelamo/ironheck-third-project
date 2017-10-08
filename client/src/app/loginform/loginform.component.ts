@@ -12,26 +12,33 @@ interface LoginForm{
   styleUrls: ['./loginform.component.css']
 })
 export class LoginformComponent implements OnInit {
-  formInfo:LoginForm = {
-    username: "",
-    password: ""
+
+  formInfo: LoginForm = {
+    username: '',
+    password: ''
   };
 
-  constructor(public auth:AuthService) { }
+  message: string;
+
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  login(){
+  login() {
     const {username, password} = this.formInfo;
-    if(username != "" && password != ""){
-      console.log(`Login with ${username} ${password}`)
+    if (username !== '' && password !== '') {
       this.auth.login(username, password)
       .map(user => console.log(user))
-      .subscribe();
-      
-    } else{
-      console.log("You must set a username and a password");
+      .subscribe(
+        () => {},
+        err => {
+          this.message = err;
+          this.formInfo = {username: '', password: ''};
+        }
+      );
+    } else {
+      this.message = 'You must set a username and a password';
     }
   }
 
