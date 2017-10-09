@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" [routerLink]=\"['/']\">Local Market</a>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav\">\n        <li><a [routerLink]=\"['/']\">Home</a></li>\n        <li><a [routerLink]=\"['/products']\">Products</a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li *ngIf=\"!user\"><a [routerLink]=\"['/login']\">Login</a></li>\n        <li *ngIf=\"!user\"><a [routerLink]=\"['/signup']\">Signup</a></li>\n        <li *ngIf=\"user\" class=\"dropdown\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Profile<span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a [routerLink]=\"['/user']\">User Profile</a></li>\n            <li><a (click)=\"logout()\">Logout</a></li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>"
+module.exports = "<nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" [routerLink]=\"['/']\">Local Market</a>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav\">\n        <li><a [routerLink]=\"['/products']\">Products</a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li *ngIf=\"!user\"><a [routerLink]=\"['/login']\">Login</a></li>\n        <li *ngIf=\"!user\"><a [routerLink]=\"['/signup']\">Signup</a></li>\n        <li *ngIf=\"user\" class=\"dropdown\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Profile<span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a [routerLink]=\"['/user']\">User Profile</a></li>\n            <li><a (click)=\"logout()\">Logout</a></li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 
@@ -89,24 +89,26 @@ var _a;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_products_service__ = __webpack_require__("../../../../../src/app/services/products.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__loginform_loginform_component__ = __webpack_require__("../../../../../src/app/loginform/loginform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__userprofile_userprofile_component__ = __webpack_require__("../../../../../src/app/userprofile/userprofile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_isLoggedIn_canactivate_service__ = __webpack_require__("../../../../../src/app/services/isLoggedIn.canactivate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__routes__ = __webpack_require__("../../../../../src/app/routes.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__signupform_signupform_component__ = __webpack_require__("../../../../../src/app/signupform/signupform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pipes_truncate_pipe__ = __webpack_require__("../../../../../src/app/pipes/truncate.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pipes_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__products_products_component__ = __webpack_require__("../../../../../src/app/products/products.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__products_product_detail_product_detail_component__ = __webpack_require__("../../../../../src/app/products/product-detail/product-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_products_service__ = __webpack_require__("../../../../../src/app/services/products.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__loginform_loginform_component__ = __webpack_require__("../../../../../src/app/loginform/loginform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__userprofile_userprofile_component__ = __webpack_require__("../../../../../src/app/userprofile/userprofile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_isLoggedIn_canactivate_service__ = __webpack_require__("../../../../../src/app/services/isLoggedIn.canactivate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__routes__ = __webpack_require__("../../../../../src/app/routes.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__signupform_signupform_component__ = __webpack_require__("../../../../../src/app/signupform/signupform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pipes_truncate_pipe__ = __webpack_require__("../../../../../src/app/pipes/truncate.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pipes_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__products_products_component__ = __webpack_require__("../../../../../src/app/products/products.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__products_product_detail_product_detail_component__ = __webpack_require__("../../../../../src/app/products/product-detail/product-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__userprofile_user_details_user_details_component__ = __webpack_require__("../../../../../src/app/userprofile/user-details/user-details.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -132,36 +134,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__angular_core__["b" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__loginform_loginform_component__["a" /* LoginformComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__userprofile_userprofile_component__["a" /* UserprofileComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__signupform_signupform_component__["a" /* SignupformComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__pipes_truncate_pipe__["a" /* TruncatePipe */],
-            __WEBPACK_IMPORTED_MODULE_15__pipes_filter_pipe__["a" /* FilterPipe */],
-            __WEBPACK_IMPORTED_MODULE_16__products_products_component__["a" /* ProductsComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__products_product_detail_product_detail_component__["a" /* ProductDetailComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__loginform_loginform_component__["a" /* LoginformComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__userprofile_userprofile_component__["a" /* UserprofileComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__signupform_signupform_component__["a" /* SignupformComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__pipes_truncate_pipe__["a" /* TruncatePipe */],
+            __WEBPACK_IMPORTED_MODULE_16__pipes_filter_pipe__["a" /* FilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_17__products_products_component__["a" /* ProductsComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__products_product_detail_product_detail_component__["a" /* ProductDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__userprofile_user_details_user_details_component__["a" /* UserDetailsComponent */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_10__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_12__routes__["a" /* routes */])
+            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_11__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_13__routes__["a" /* routes */])
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_7__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_11__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */],
-            __WEBPACK_IMPORTED_MODULE_0__services_products_service__["a" /* ProductsService */]
+            __WEBPACK_IMPORTED_MODULE_8__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_12__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */],
+            __WEBPACK_IMPORTED_MODULE_1__services_products_service__["a" /* ProductsService */],
+            __WEBPACK_IMPORTED_MODULE_0__services_user_service__["a" /* UserService */]
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -484,7 +490,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/products/products.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-container\">\n  <div class=\"row\">\n    <div class=\"col-sm-2\"></div>\n    <div class=\"col-sm-8\">\n      <div class=\"input-group\">\n        <div *ngIf=\"!user.userType\" class=\"alert alert-danger incomplete\" role=\"alert\">\n          <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>\n          User profile is incomplete\n        </div>\n        <input class=\"search form-control\" [(ngModel)]=\"searchInput\" placeholder=\"Search...\">\n      </div>\n    </div>\n    <div class=\"col-sm-2\">\n      <div *ngIf=\"user.userType == 'provider'\">\n        <h1>hola</h1>  \n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"products\" *ngFor=\"let product of products | filter:'name':searchInput\">\n  <div class=\"card-group\">\n    <div class=\"card\">\n      <div class=\"card-block\">\n        <img class=\"card-img-top\" src=\"http://4vector.com/i/free-vector-wheat-pattern-02-vector_022936_2.jpg\" alt=\"Product Image\"\n          height=\"100\" width=\"100\">\n        <h4 class=\"card-title\">{{product.name}}</h4>\n        <p class=\"card-text\">{{product.description | truncate : 40}}</p>\n        <p class=\"card-text\">Producer: {{product.producer.username}}</p>\n        <p class=\"card-text\">Price: {{product.price}} &euro;</p>\n        <a class=\"btn btn-primary\" [routerLink]=\"['/products', product._id]\">View</a>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"search-container\">\n  <div class=\"row\">\n    <div class=\"col-sm-2\"></div>\n    <div class=\"col-sm-8\">\n      <div class=\"input-group\">\n        <div *ngIf=\"!user.userType\" class=\"alert alert-danger incomplete\" role=\"alert\">\n          <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>\n          User profile is incomplete\n        </div>\n        <div class=\"nav\">\n          <ul class=\"nav nav-tabs\">\n            <li role=\"presentation\"><a [routerLink]=\"['/products']\">All products</a></li>\n            <li *ngIf=\"user.userType == 'provider'\" role=\"presentation\"><a href=\"#\">My products</a></li>\n          </ul>\n        </div>\n        <input class=\"search form-control\" [(ngModel)]=\"searchInput\" placeholder=\"Search...\">\n      </div>\n    </div>\n    <div class=\"col-sm-2\">\n      <div *ngIf=\"user.userType == 'provider'\">\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"products\" *ngFor=\"let product of products | filter:'name':searchInput\">\n  <div class=\"card-group\">\n    <div class=\"card\">\n      <div class=\"card-block\">\n        <img class=\"card-img-top\" src=\"http://4vector.com/i/free-vector-wheat-pattern-02-vector_022936_2.jpg\" alt=\"Product Image\"\n          height=\"100\" width=\"100\">\n        <h4 class=\"card-title\">{{product.name}}</h4>\n        <p class=\"card-text\">{{product.description | truncate : 40}}</p>\n        <p class=\"card-text\">Producer: {{product.producer.username}}</p>\n        <p class=\"card-text\">Price: {{product.price}} &euro;</p>\n        <a class=\"btn btn-primary\" [routerLink]=\"['/products', product._id]\">View</a>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -541,13 +547,14 @@ var _a, _b;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_product_detail_product_detail_component__ = __webpack_require__("../../../../../src/app/products/product-detail/product-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__products_products_component__ = __webpack_require__("../../../../../src/app/products/products.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__userprofile_userprofile_component__ = __webpack_require__("../../../../../src/app/userprofile/userprofile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__loginform_loginform_component__ = __webpack_require__("../../../../../src/app/loginform/loginform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signupform_signupform_component__ = __webpack_require__("../../../../../src/app/signupform/signupform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_isLoggedIn_canactivate_service__ = __webpack_require__("../../../../../src/app/services/isLoggedIn.canactivate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__userprofile_user_details_user_details_component__ = __webpack_require__("../../../../../src/app/userprofile/user-details/user-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__products_product_detail_product_detail_component__ = __webpack_require__("../../../../../src/app/products/product-detail/product-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__products_products_component__ = __webpack_require__("../../../../../src/app/products/products.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__userprofile_userprofile_component__ = __webpack_require__("../../../../../src/app/userprofile/userprofile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__loginform_loginform_component__ = __webpack_require__("../../../../../src/app/loginform/loginform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signupform_signupform_component__ = __webpack_require__("../../../../../src/app/signupform/signupform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_isLoggedIn_canactivate_service__ = __webpack_require__("../../../../../src/app/services/isLoggedIn.canactivate.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routes; });
 
 
@@ -556,13 +563,15 @@ var _a, _b;
 
 
 
+
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */] },
-    { path: 'user', component: __WEBPACK_IMPORTED_MODULE_3__userprofile_userprofile_component__["a" /* UserprofileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */]] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_4__loginform_loginform_component__["a" /* LoginformComponent */], },
-    { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_5__signupform_signupform_component__["a" /* SignupformComponent */], },
-    { path: 'products', component: __WEBPACK_IMPORTED_MODULE_1__products_products_component__["a" /* ProductsComponent */] },
-    { path: 'products/:id', component: __WEBPACK_IMPORTED_MODULE_0__products_product_detail_product_detail_component__["a" /* ProductDetailComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_3__home_home_component__["a" /* HomeComponent */] },
+    { path: 'user', component: __WEBPACK_IMPORTED_MODULE_4__userprofile_userprofile_component__["a" /* UserprofileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */]] },
+    { path: 'user/profile', component: __WEBPACK_IMPORTED_MODULE_0__userprofile_user_details_user_details_component__["a" /* UserDetailsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */]] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_5__loginform_loginform_component__["a" /* LoginformComponent */], },
+    { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_6__signupform_signupform_component__["a" /* SignupformComponent */], },
+    { path: 'products', component: __WEBPACK_IMPORTED_MODULE_2__products_products_component__["a" /* ProductsComponent */] },
+    { path: 'products/:id', component: __WEBPACK_IMPORTED_MODULE_1__products_product_detail_product_detail_component__["a" /* ProductDetailComponent */] },
     { path: '**', redirectTo: '' }
 ];
 //# sourceMappingURL=routes.js.map
@@ -758,6 +767,47 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BASEURL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].BASEURL + '/users';
+var UserService = (function () {
+    function UserService(http) {
+        this.http = http;
+    }
+    UserService.prototype.editUser = function (id, user) {
+        return this.http.put(BASEURL + "/" + id + "/edit", user)
+            .map(function (res) { return res.json(); });
+    };
+    return UserService;
+}());
+UserService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], UserService);
+
+var _a;
+//# sourceMappingURL=user.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/signupform/signupform.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -839,6 +889,110 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/userprofile/user-details/user-details.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".save-btn{\n  margin: 10px;\n}\n\n.prof-btn{\n  margin: 10px;\n}\n\n.edit-user {\n  margin-top: 25px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/userprofile/user-details/user-details.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"!user\">\n  <h2>No user logged in</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <div class=\"row edit-user\">\n    <div class=\"col-sm-2\">\n      <img class=\"img-circle\" src=\"{{user.image}}\" alt=\"Profile image not found\"  height=\"150\" width=\"150\">\n      <hr>\n      <h4><b>Username</b> {{ user.username }}</h4>\n    </div>\n    <div class=\"col-sm-8\">\n      <form>\n        <div class=\"form-group\">\n          <label>Username</label>\n          <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.username\" name=\"username\" required>\n        </div>\n        <div class=\"col-sm-6\">\n          <div class=\"form-group\">\n            <label>First Name</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.firstName\" name=\"firstname\" required>\n          </div>\n          <div class=\"form-group\">\n            <label>Email</label>\n            <input class=\"form-control\" type=\"email\" [(ngModel)]=\"editUser.email\" name=\"email\" required>\n          </div>\n          <div class=\"form-group\">\n            <label>Phone number</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.phoneNumber\" name=\"phonenumber\" required>\n          </div>\n          <div class=\"form-group\">\n            <label>Company Name</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.companyName\" name=\"companyName\"  required>\n          </div>\n        </div>\n        <div class=\"col-sm-6\">\n          <div class=\"form-group\">\n            <label>Last Name</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.lastName\" name=\"lastName\"  required>\n          </div>\n          <div class=\"form-group\">\n            <label>Address</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.address\" name=\"address\"  required>\n          </div>\n          <div class=\"form-group\">\n            <label>User Type</label>\n            <select name=\"usertype\" class=\"form-control\">\n              <option value=\"provider\" disabled>User Type: {{user.userType}}</option>\n              <option value=\"provider\">Provider</option>\n              <option value=\"client\">Client</option>\n            </select>\n          </div>\n          <div *ngIf=\"user.userType == 'provider'\" class=\"form-group\">\n            <label>Production Type</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.productionType\" name=\"productionType\"  required>\n          </div>\n        </div>\n      </form>\n    </div>\n    <div class=\"col-sm-2\">\n      <a class=\"btn btn-primary save-btn\" (click)=\"saveChanges()\">Save Changes</a>\n      <a class=\"btn btn-primary prof-btn\" [routerLink]=\"['/user']\">Back to Profile</a>      \n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/userprofile/user-details/user-details.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDetailsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var UserDetailsComponent = (function () {
+    function UserDetailsComponent(auth, usrService, router) {
+        this.auth = auth;
+        this.usrService = usrService;
+        this.router = router;
+        this.editUser = {
+            username: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            address: '',
+            phoneNumber: 0,
+            companyName: '',
+            userType: ''
+        };
+    }
+    UserDetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.user = this.auth.getUser();
+        this.auth.isLoggedIn()
+            .subscribe(function (user) {
+            console.log(user.userType);
+            _this.editUser = {
+                username: user.username,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                address: user.address,
+                phoneNumber: user.phoneNumber,
+                companyName: user.companyName,
+                userType: user.userType
+            };
+        });
+    };
+    UserDetailsComponent.prototype.saveChanges = function () {
+        var _this = this;
+        this.usrService.editUser(this.user._id, this.editUser)
+            .subscribe(function () {
+            _this.router.navigate(['/user']);
+        });
+    };
+    return UserDetailsComponent;
+}());
+UserDetailsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__angular_core__["_14" /* Component */])({
+        selector: 'app-user-details',
+        template: __webpack_require__("../../../../../src/app/userprofile/user-details/user-details.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/userprofile/user-details/user-details.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */]) === "function" && _c || Object])
+], UserDetailsComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=user-details.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/userprofile/userprofile.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -847,7 +1001,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "img{\n  border-radius: 50%;\n}\n\n", ""]);
+exports.push([module.i, "p {\n  font-size: 20px !important;\n}\n\n.user-perf{\n  margin: 20px;\n}\n\n.prof-btn{\n  margin: 10px;\n}\n\n/* .panel-footer {\n  text-align: center !important;\n} */", ""]);
 
 // exports
 
@@ -860,7 +1014,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/userprofile/userprofile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!user\">\n  <h2>No user logged in</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <h2 style=\"text-align: center;\"> You are now logged in as {{ user.username }}!! </h2>\n  <!-- <pre> {{ user | json }} </pre> -->\n  <div class=\"row\">\n    <div class=\"col-sm-2\">\n      <img src=\"{{user.image}}\" alt=\"Profile Image\" height=\"100\" width=\"100\">\n      <hr>\n      <h5>{{ user.username }}</h5>\n    </div>\n    <div class=\"col-sm-8\">\n      \n    </div>\n    <div class=\"col-sm-2\">\n      <a class=\"btn btn-primary left\" (click)=\"saveChanges()\">Save Changes</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div *ngIf=\"!user\">\n  <h2>No user logged in</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <div class=\"row user-perf\">\n    <div class=\"col-sm-2\">\n      <img class=\"img-circle\" src=\"{{user.image}}\" alt=\"Profile image not found\" height=\"150\" width=\"150\">\n    </div>\n    <div class=\"col-sm-9\">\n      <div class=\"panel panel-primary\">\n        <div class=\"panel-body\">\n          <h2>User \n            <b>{{user.username}}</b>\n          </h2>\n        </div>\n        <div class=\"panel-footer\">\n          <div class=\"row\">\n            <div class=\"col-sm-4\">\n                <p *ngIf=\"user.firstName && user.lastName\"><b>Name</b> {{user.firstName}} {{user.lastName}}</p>\n                <p *ngIf=\"!user.firstName && !user.lastName\"><b>Name</b> Not specified</p>\n                <p *ngIf=\"user.phoneNumber\"><b>Phone Number</b> {{user.phoneNumber}}</p>\n                <p *ngIf=\"!user.phoneNumber\"><b>Phone Number</b> Not specified</p>\n                <p *ngIf=\"user.productionType\"><b>Production Type</b> {{user.productionType}}</p>\n                <p *ngIf=\"!user.productionType\"><b>Production Type</b> Not specified</p>                \n            </div>\n            <div class=\"col-sm-4\">\n              <p *ngIf=\"user.email\"><b>Email</b> {{user.email}}</p>\n              <p *ngIf=\"!user.email\"><b>Email</b> Not specified</p>\n              <p *ngIf=\"user.userType\"><b>User Type</b> {{user.userType}}</p>\n              <p *ngIf=\"!user.userType\"><b>User Type</b> Not specified</p>\n              <p *ngIf=\"user.seasonStarts\"><b>Season Starts</b> {{user.seasonStarts}}</p>\n              <p *ngIf=\"!user.seasonStarts\"><b>Season Starts</b> Not specified</p>\n            </div>\n            <div class=\"col-sm-4\">\n              <p *ngIf=\"user.address\"><b>Address </b> {{user.address}}</p>\n              <p *ngIf=\"!user.address\"><b>Address </b> Not specified</p>\n              <p *ngIf=\"user.companyName\"><b>Company Name</b> {{user.companyName}}</p>\n              <p *ngIf=\"!user.companyName\"><b>Company Name</b> Not specified</p>\n              <p *ngIf=\"user.seasonEnds\"><b>Season Ends</b> {{user.seasonEnd}}</p>\n              <p *ngIf=\"!user.seasonEnds\"><b>Season Ends</b> Not specified</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-1\">\n      <a class=\"btn btn-primary prof-btn\" [routerLink]=\"['/user', 'profile']\">User profile</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -886,8 +1040,7 @@ var UserprofileComponent = (function () {
     function UserprofileComponent(auth) {
         var _this = this;
         this.auth = auth;
-        this.user = this.auth.getUser();
-        this.auth.getLoginEventEmitter()
+        this.auth.isLoggedIn()
             .subscribe(function (user) { return _this.user = user; });
     }
     UserprofileComponent.prototype.ngOnInit = function () {
@@ -917,10 +1070,14 @@ var _a;
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
+// export const environment = {
+//   production: false,
+//   BASEURL: 'http://localhost:3000/api'
+// };
 // The file contents for the current environment will overwrite these during build.
 var environment = {
-    production: false,
-    BASEURL: 'http://localhost:3000/api'
+    production: true,
+    BASEURL: ''
 };
 //# sourceMappingURL=environment.js.map
 

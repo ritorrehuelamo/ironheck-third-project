@@ -7,12 +7,17 @@
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           User profile is incomplete
         </div>
+        <div class="nav">
+          <ul class="nav nav-tabs">
+            <li role="presentation"><a [routerLink]="['/products']">All products</a></li>
+            <li *ngIf="user.userType == 'provider'" role="presentation"><a href="#">My products</a></li>
+          </ul>
+        </div>
         <input class="search form-control" [(ngModel)]="searchInput" placeholder="Search...">
       </div>
     </div>
     <div class="col-sm-2">
       <div *ngIf="user.userType == 'provider'">
-        <h1>hola</h1>  
       </div>
     </div>
   </div>

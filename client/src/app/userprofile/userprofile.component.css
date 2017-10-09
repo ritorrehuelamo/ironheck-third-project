@@ -1,4 +1,15 @@
-img{
-  border-radius: 50%;
+p {
+  font-size: 20px !important;
 }
 
+.user-perf{
+  margin: 20px;
+}
+
+.prof-btn{
+  margin: 10px;
+}
+
+/* .panel-footer {
+  text-align: center !important;
+} */

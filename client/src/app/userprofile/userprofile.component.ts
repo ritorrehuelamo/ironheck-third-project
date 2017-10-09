@@ -11,8 +11,7 @@ export class UserprofileComponent implements OnInit {
   user: object;
 
   constructor(public auth: AuthService) {
-    this.user = this.auth.getUser();
-    this.auth.getLoginEventEmitter()
+    this.auth.isLoggedIn()
         .subscribe( user => this.user = user );
   }
 
