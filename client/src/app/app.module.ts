@@ -1,3 +1,4 @@
+import { ProductsService } from './services/products.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -14,8 +15,7 @@ import { SignupformComponent } from './signupform/signupform.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProductsComponent } from './products/products.component';
-import { AccountComponent } from './userprofile/account/account.component';
-import { PasswordComponent } from './userprofile/password/password.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,7 @@ import { PasswordComponent } from './userprofile/password/password.component';
     TruncatePipe,
     FilterPipe,
     ProductsComponent,
-    AccountComponent,
-    PasswordComponent
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,11 @@ import { PasswordComponent } from './userprofile/password/password.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, IsLoggedInService],
+  providers: [
+    AuthService,
+    IsLoggedInService,
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

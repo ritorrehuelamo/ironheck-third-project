@@ -45,10 +45,9 @@ module.exports = {
   isLoggedIn: (req, res, next) => {
     if(req.isAuthenticated())
       return res.status(200).json(req.user)
-    res.status(403).json({message: 'Unauthorized'})
+    // res.status(403).json({message: 'Unauthorized'})
   },
   logout: (req, res, next) => {
-    console.log("ME CAGO EN JUDAS")
     req.logout()
     res.status(200).json({message: 'Success'})
   }

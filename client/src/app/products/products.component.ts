@@ -1,3 +1,5 @@
+import { AuthService } from './../services/auth.service';
+import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  user;
+  products;
+
+  constructor(
+    private productService: ProductsService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.productService.getList()
+      .subscribe(p => this.products = p);
+    this.user = this.authService.getUser();
+    this.authService.getLoginEventEmitter()
+      .subscribe( user => this.user = user );
   }
 
 }

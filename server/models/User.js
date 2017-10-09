@@ -9,7 +9,7 @@ const userSchema = new Schema({
   email: String,
   address: String,
   phoneNumber: Number,
-  image: {type: String, default: ''},
+  image: {type: String, default: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'},
   userType: {type: String, enum: ['provider', 'client']},
   companyName: {type: String, default: ''},
   productionType: {type: String, default: ''},

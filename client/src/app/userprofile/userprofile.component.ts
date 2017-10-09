@@ -9,7 +9,6 @@ import { AuthService } from '../services/auth.service';
 export class UserprofileComponent implements OnInit {
 
   user: object;
-  component: string;
 
   constructor(public auth: AuthService) {
     this.user = this.auth.getUser();
@@ -20,7 +19,4 @@ export class UserprofileComponent implements OnInit {
   ngOnInit() {
   }
 
-  setComponent (part: string) {
-    this.component = part;
-  }
 }
