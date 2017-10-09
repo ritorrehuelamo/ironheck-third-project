@@ -3,7 +3,10 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <div class="input-group">
-        <div *ngIf="!user.productionType" class="alert alert-danger" role="alert">User profile is incomplete</div>
+        <div *ngIf="!user.userType" class="alert alert-danger incomplete" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          User profile is incomplete
+        </div>
         <input class="search form-control" [(ngModel)]="searchInput" placeholder="Search...">
       </div>
     </div>
