@@ -1,0 +1,21 @@
+<div *ngIf="!user">
+  <h2>No user logged in</h2>
+</div>
+
+<div *ngIf="user">
+  <h2 style="text-align: center;"> You are now logged in as {{ user.username }}!! </h2>
+  <!-- <pre> {{ user | json }} </pre> -->
+  <div class="row">
+    <div class="col-sm-2">
+      <img src="{{user.image}}" alt="Profile Image" height="100" width="100">
+      <hr>
+      <h5>{{ user.username }}</h5>
+    </div>
+    <div class="col-sm-8">
+      
+    </div>
+    <div class="col-sm-2">
+      <a class="btn btn-primary left" (click)="saveChanges()">Save Changes</a>
+    </div>
+  </div>
+</div>
