@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
@@ -15,6 +14,10 @@ const cors = require('cors')
 const rootRouter = require('./routes/')
 
 const app = express()
+
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 
 require('./config/dbConfig')
 

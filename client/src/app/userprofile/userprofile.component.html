@@ -3,64 +3,49 @@
 </div>
 
 <div *ngIf="user">
-  <h2 style="text-align: center;"> You are now logged in as {{ user.username }}!! </h2>
-  <!-- <pre> {{ user | json }} </pre> -->
-  <div class="row">
+  <div class="row user-perf">
     <div class="col-sm-2">
-      <img src="{{user.image}}" alt="Profile Image" height="100" width="100">
-      <hr>
-      <h5>{{ user.username }}</h5>
+      <img class="img-circle" src="{{user.image}}" alt="Profile image not found" height="150" width="150">
     </div>
-    <div class="col-sm-8">
-      <form>
-        <div class="form-group">
-          <label>Username</label>
-          <input class="form-control" type="text" [(ngModel)]="editUser.username" name="username" placeholder="{{user.username}}">
+    <div class="col-sm-9">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <h2>User 
+            <b>{{user.username}}</b>
+          </h2>
         </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>First Name</label>
-            <input class="form-control" type="text" [(ngModel)]="editUser.firstName" name="firstname" placeholder="{{user.firstName}}">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input class="form-control" type="email" [(ngModel)]="editUser.email" name="email" placeholder="{{user.email}}">
-          </div>
-          <div class="form-group">
-            <label>Phone number</label>
-            <input class="form-control" type="text" [(ngModel)]="editUser.phoneNumber" name="phonenumber" placeholder="{{user.phoneNumber}}">
-          </div>
-          <div class="form-group">
-              <label>Company Name</label>
-              <input class="form-control" type="text" [(ngModel)]="editUser.companyName" name="companyName" placeholder="{{user.companyName}}">
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-sm-4">
+                <p *ngIf="user.firstName && user.lastName"><b>Name</b> {{user.firstName}} {{user.lastName}}</p>
+                <p *ngIf="!user.firstName && !user.lastName"><b>Name</b> Not specified</p>
+                <p *ngIf="user.phoneNumber"><b>Phone Number</b> {{user.phoneNumber}}</p>
+                <p *ngIf="!user.phoneNumber"><b>Phone Number</b> Not specified</p>
+                <p *ngIf="user.productionType"><b>Production Type</b> {{user.productionType}}</p>
+                <p *ngIf="!user.productionType"><b>Production Type</b> Not specified</p>                
             </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>Last Name</label>
-            <input class="form-control" type="text" [(ngModel)]="editUser.lastName" name="email" placeholder="{{user.lastName}}">
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <input class="form-control" type="text" [(ngModel)]="editUser.adress" name="address" placeholder="{{user.address}}">
-          </div>
-          <div class="form-group">
-            <label>User Type</label>
-            <select name="usertype" class="form-control">
-              <option value="provider" disabled>User Type: {{user.userType}}</option>                
-              <option value="provider">Provider</option>
-              <option value="client">Client</option>
-            </select>
-          </div>
-          <div *ngIf="user.userType == 'provider'" class="form-group">
-              <label>Production Type</label>
-              <input class="form-control" type="text" [(ngModel)]="editUser.productionType" name="productionType" placeholder="{{user.productionType}}">
+            <div class="col-sm-4">
+              <p *ngIf="user.email"><b>Email</b> {{user.email}}</p>
+              <p *ngIf="!user.email"><b>Email</b> Not specified</p>
+              <p *ngIf="user.userType"><b>User Type</b> {{user.userType}}</p>
+              <p *ngIf="!user.userType"><b>User Type</b> Not specified</p>
+              <p *ngIf="user.seasonStarts"><b>Season Starts</b> {{user.seasonStarts}}</p>
+              <p *ngIf="!user.seasonStarts"><b>Season Starts</b> Not specified</p>
             </div>
+            <div class="col-sm-4">
+              <p *ngIf="user.address"><b>Address </b> {{user.address}}</p>
+              <p *ngIf="!user.address"><b>Address </b> Not specified</p>
+              <p *ngIf="user.companyName"><b>Company Name</b> {{user.companyName}}</p>
+              <p *ngIf="!user.companyName"><b>Company Name</b> Not specified</p>
+              <p *ngIf="user.seasonEnds"><b>Season Ends</b> {{user.seasonEnd}}</p>
+              <p *ngIf="!user.seasonEnds"><b>Season Ends</b> Not specified</p>
+            </div>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
-    <div class="col-sm-2">
-      <a class="btn btn-primary left" (click)="saveChanges()">Save Changes</a>
+    <div class="col-sm-1">
+      <a class="btn btn-primary prof-btn" [routerLink]="['/user', 'profile']">User profile</a>
     </div>
   </div>
 </div>

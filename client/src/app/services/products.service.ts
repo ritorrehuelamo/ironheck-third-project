@@ -9,7 +9,7 @@ export class ProductsService {
 
   private product: object;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   getList() {
     return this.http.get(`${BASEURL}/`)

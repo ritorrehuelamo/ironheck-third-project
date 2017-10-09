@@ -1,0 +1,65 @@
+<div *ngIf="!user">
+  <h2>No user logged in</h2>
+</div>
+
+<div *ngIf="user">
+  <div class="row edit-user">
+    <div class="col-sm-2">
+      <img class="img-circle" src="{{user.image}}" alt="Profile image not found"  height="150" width="150">
+      <hr>
+      <h4><b>Username</b> {{ user.username }}</h4>
+    </div>
+    <div class="col-sm-8">
+      <form>
+        <div class="form-group">
+          <label>Username</label>
+          <input class="form-control" type="text" [(ngModel)]="editUser.username" name="username" required>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control" type="text" [(ngModel)]="editUser.firstName" name="firstname" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="email" [(ngModel)]="editUser.email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label>Phone number</label>
+            <input class="form-control" type="text" [(ngModel)]="editUser.phoneNumber" name="phonenumber" required>
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input class="form-control" type="text" [(ngModel)]="editUser.companyName" name="companyName"  required>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Last Name</label>
+            <input class="form-control" type="text" [(ngModel)]="editUser.lastName" name="lastName"  required>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" type="text" [(ngModel)]="editUser.address" name="address"  required>
+          </div>
+          <div class="form-group">
+            <label>User Type</label>
+            <select name="usertype" class="form-control">
+              <option value="provider" disabled>User Type: {{user.userType}}</option>
+              <option value="provider">Provider</option>
+              <option value="client">Client</option>
+            </select>
+          </div>
+          <div *ngIf="user.userType == 'provider'" class="form-group">
+            <label>Production Type</label>
+            <input class="form-control" type="text" [(ngModel)]="editUser.productionType" name="productionType"  required>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2">
+      <a class="btn btn-primary save-btn" (click)="saveChanges()">Save Changes</a>
+      <a class="btn btn-primary prof-btn" [routerLink]="['/user']">Back to Profile</a>      
+    </div>
+  </div>
+</div>

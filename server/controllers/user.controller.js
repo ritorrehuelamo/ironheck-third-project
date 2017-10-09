@@ -13,13 +13,10 @@ module.exports = {
     .catch(e => res.status(500).json(`Error getting user -> ${e}`))
   },
   editUser: (req, res, next) => {
-    const {username, password, firstName, lastName, email, address, phoneNumber, image, userType, companyName, productionType, seasonStarts, seasonEnds} = req.body
-    const salt = bcrypt.genSaltSync(10)
-    const hashPass = bcrypt.hashSync(password, salt)
+    const {username, firstName, lastName, email, address, phoneNumber, image, userType, companyName, productionType, seasonStarts, seasonEnds} = req.body
     User.findByIdAndUpdate(req.params.id,{
       $set: {
         'username': username, 
-        'password': hashPass, 
         'firstName': firstName, 
         'lastName': lastName, 
         'email': email, 
@@ -33,7 +30,10 @@ module.exports = {
         'seasonEnds': seasonEnds
       }},
       {new: true}).exec()
-    .then(user => res.status(200).json(user))
+    .then(user => {
+      console.log(user)
+      res.status(200).json(user)
+    })
     .catch(e => res.status(500).json({message: `Error updating user -> ${e}`}))
   },
   deleteUser: (req, res, next) => {

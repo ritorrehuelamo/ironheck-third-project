@@ -1,3 +1,4 @@
+import { UserService } from './services/user.service';
 import { ProductsService } from './services/products.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { UserDetailsComponent } from './userprofile/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
     TruncatePipe,
     FilterPipe,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
   providers: [
     AuthService,
     IsLoggedInService,
-    ProductsService
+    ProductsService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
