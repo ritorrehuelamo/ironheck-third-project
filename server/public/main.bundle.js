@@ -860,7 +860,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/userprofile/userprofile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!user\">\n  <h2>No user logged in</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <h2 style=\"text-align: center;\"> You are now logged in as {{ user.username }}!! </h2>\n  <!-- <pre> {{ user | json }} </pre> -->\n  <div class=\"row\">\n    <div class=\"col-sm-2\">\n      <img src=\"{{user.image}}\" alt=\"Profile Image\" height=\"100\" width=\"100\">\n      <hr>\n      <h5>{{ user.username }}</h5>\n    </div>\n    <div class=\"col-sm-8\">\n      \n    </div>\n    <div class=\"col-sm-2\">\n      <a class=\"btn btn-primary left\" (click)=\"saveChanges()\">Save Changes</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div *ngIf=\"!user\">\n  <h2>No user logged in</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <h2 style=\"text-align: center;\"> You are now logged in as {{ user.username }}!! </h2>\n  <!-- <pre> {{ user | json }} </pre> -->\n  <div class=\"row\">\n    <div class=\"col-sm-2\">\n      <img src=\"{{user.image}}\" alt=\"Profile Image\" height=\"100\" width=\"100\">\n      <hr>\n      <h5>{{ user.username }}</h5>\n    </div>\n    <div class=\"col-sm-8\">\n      <form>\n        <div class=\"form-group\">\n          <label>Username</label>\n          <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.username\" name=\"username\" placeholder=\"{{user.username}}\">\n        </div>\n        <div class=\"col-sm-6\">\n          <div class=\"form-group\">\n            <label>First Name</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.firstName\" name=\"firstname\" placeholder=\"{{user.firstName}}\">\n          </div>\n          <div class=\"form-group\">\n            <label>Email</label>\n            <input class=\"form-control\" type=\"email\" [(ngModel)]=\"editUser.email\" name=\"email\" placeholder=\"{{user.email}}\">\n          </div>\n          <div class=\"form-group\">\n            <label>Phone number</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.phoneNumber\" name=\"phonenumber\" placeholder=\"{{user.phoneNumber}}\">\n          </div>\n          <div class=\"form-group\">\n              <label>Company Name</label>\n              <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.companyName\" name=\"companyName\" placeholder=\"{{user.companyName}}\">\n            </div>\n        </div>\n        <div class=\"col-sm-6\">\n          <div class=\"form-group\">\n            <label>Last Name</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.lastName\" name=\"email\" placeholder=\"{{user.lastName}}\">\n          </div>\n          <div class=\"form-group\">\n            <label>Address</label>\n            <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.adress\" name=\"address\" placeholder=\"{{user.address}}\">\n          </div>\n          <div class=\"form-group\">\n            <label>User Type</label>\n            <select name=\"usertype\" class=\"form-control\">\n              <option value=\"provider\" disabled>User Type: {{user.userType}}</option>                \n              <option value=\"provider\">Provider</option>\n              <option value=\"client\">Client</option>\n            </select>\n          </div>\n          <div *ngIf=\"user.userType == 'provider'\" class=\"form-group\">\n              <label>Production Type</label>\n              <input class=\"form-control\" type=\"text\" [(ngModel)]=\"editUser.productionType\" name=\"productionType\" placeholder=\"{{user.productionType}}\">\n            </div>\n        </div>\n      </form>\n    </div>\n    <div class=\"col-sm-2\">\n      <a class=\"btn btn-primary left\" (click)=\"saveChanges()\">Save Changes</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -886,6 +886,13 @@ var UserprofileComponent = (function () {
     function UserprofileComponent(auth) {
         var _this = this;
         this.auth = auth;
+        this.editUser = {
+            username: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            address: ''
+        };
         this.user = this.auth.getUser();
         this.auth.getLoginEventEmitter()
             .subscribe(function (user) { return _this.user = user; });
