@@ -29,7 +29,7 @@ export class LoginformComponent implements OnInit {
     const {username, password} = this.formInfo;
     if (username !== '' && password !== '') {
       this.auth.login(username, password)
-      .map(user => console.log(user))
+      .map(() => {})
       .subscribe(
         () => {},
         err => {

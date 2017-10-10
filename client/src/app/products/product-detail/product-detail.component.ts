@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -10,11 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
 
   product;
+  user;
 
   constructor(
     private productService: ProductsService,
     private routes: ActivatedRoute,
-  ) { }
+    private auth: AuthService
+  ) {
+    this.auth.isLoggedIn()
+    .subscribe( user => this.user = user );
+  }
 
   ngOnInit() {
     this.routes.params.subscribe(params => {

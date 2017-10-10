@@ -21,24 +21,24 @@
                 <p *ngIf="!user.firstName && !user.lastName"><b>Name</b> Not specified</p>
                 <p *ngIf="user.phoneNumber"><b>Phone Number</b> {{user.phoneNumber}}</p>
                 <p *ngIf="!user.phoneNumber"><b>Phone Number</b> Not specified</p>
-                <p *ngIf="user.productionType"><b>Production Type</b> {{user.productionType}}</p>
-                <p *ngIf="!user.productionType"><b>Production Type</b> Not specified</p>                
+                <p *ngIf="user.productionType && user.userType === 'provider'"><b>Production Type</b> {{user.productionType}}</p>
+                <p *ngIf="!user.productionType && user.userType === 'provider'"><b>Production Type</b> Not specified</p>                
             </div>
             <div class="col-sm-4">
               <p *ngIf="user.email"><b>Email</b> {{user.email}}</p>
               <p *ngIf="!user.email"><b>Email</b> Not specified</p>
               <p *ngIf="user.userType"><b>User Type</b> {{user.userType}}</p>
               <p *ngIf="!user.userType"><b>User Type</b> Not specified</p>
-              <p *ngIf="user.seasonStarts"><b>Season Starts</b> {{user.seasonStarts}}</p>
-              <p *ngIf="!user.seasonStarts"><b>Season Starts</b> Not specified</p>
+              <p *ngIf="user.seasonStarts && user.userType === 'provider'"><b>Season Starts</b> {{user.seasonStarts | date:'shortDate' }}</p>
+              <p *ngIf="!user.seasonStarts && user.userType === 'provider'"><b>Season Starts</b> Not specified</p>
             </div>
             <div class="col-sm-4">
               <p *ngIf="user.address"><b>Address </b> {{user.address}}</p>
               <p *ngIf="!user.address"><b>Address </b> Not specified</p>
               <p *ngIf="user.companyName"><b>Company Name</b> {{user.companyName}}</p>
               <p *ngIf="!user.companyName"><b>Company Name</b> Not specified</p>
-              <p *ngIf="user.seasonEnds"><b>Season Ends</b> {{user.seasonEnd}}</p>
-              <p *ngIf="!user.seasonEnds"><b>Season Ends</b> Not specified</p>
+              <p *ngIf="user.seasonEnds && user.userType === 'provider'"><b>Season Ends</b> {{user.seasonEnds | date:'shortDate' }}</p>
+              <p *ngIf="!user.seasonEnds && user.userType === 'provider'"><b>Season Ends</b> Not specified</p>
             </div>
           </div>
         </div>
@@ -46,6 +46,7 @@
     </div>
     <div class="col-sm-1">
       <a class="btn btn-primary prof-btn" [routerLink]="['/user', 'profile']">User profile</a>
+      <a class="btn btn-primary prof-btn" [routerLink]="['']">Back to Home</a>
     </div>
   </div>
 </div>

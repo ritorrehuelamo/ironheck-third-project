@@ -10,7 +10,7 @@
       <h4><b>Username</b> {{ user.username }}</h4>
     </div>
     <div class="col-sm-8">
-      <form>
+      <form novalidate>
         <div class="form-group">
           <label>Username</label>
           <input class="form-control" type="text" [(ngModel)]="editUser.username" name="username" required>
@@ -30,7 +30,11 @@
           </div>
           <div class="form-group">
             <label>Company Name</label>
-            <input class="form-control" type="text" [(ngModel)]="editUser.companyName" name="companyName"  required>
+            <input class="form-control" type="text" [(ngModel)]="editUser.companyName" name="companyname"  required>
+          </div>
+          <div *ngIf="user.userType === 'provider'" class="form-group">
+            <label>Season Starts</label>
+            <input class="form-control" type="date" [(ngModel)]="editUser.seasonStarts" name="seasonstarts">
           </div>
         </div>
         <div class="col-sm-6">
@@ -44,7 +48,7 @@
           </div>
           <div class="form-group">
             <label>User Type</label>
-            <select name="usertype" class="form-control">
+            <select name="usertype" [(ngModel)]="editUser.userType" class="form-control">
               <option value="provider" disabled>User Type: {{user.userType}}</option>
               <option value="provider">Provider</option>
               <option value="client">Client</option>
@@ -53,6 +57,10 @@
           <div *ngIf="user.userType == 'provider'" class="form-group">
             <label>Production Type</label>
             <input class="form-control" type="text" [(ngModel)]="editUser.productionType" name="productionType"  required>
+          </div>
+          <div *ngIf="user.userType === 'provider'" class="form-group">
+            <label>Season Ends</label>
+            <input class="form-control" type="date" [(ngModel)]="editUser.seasonEnds" name="seasonends">
           </div>
         </div>
       </form>

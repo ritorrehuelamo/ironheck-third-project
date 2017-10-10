@@ -15,14 +15,16 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.productService.getList()
-      .subscribe(p => this.products = p);
     this.user = this.authService.getUser();
-    this.authService.getLoginEventEmitter()
-      .subscribe( user => this.user = user );
+    this.authService.isLoggedIn()
+      .subscribe( user => {
+        this.user = user;
+        this.productService.getList()
+        .subscribe(p => this.products = p);
+      });
   }
 
 }

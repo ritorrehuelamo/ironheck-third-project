@@ -26,8 +26,13 @@ export class ProductsService {
       .map(res => res.json());
   }
 
+  updateProduct(id, product) {
+    return this.http.put(`${BASEURL}/${id}/edit`, product)
+      .map(res => res.json());
+  }
+
   deleteProduct(id) {
-    return this.http.delete(`${BASEURL}/${id}`)
+    return this.http.delete(`${BASEURL}/${id}/delete`)
       .map(res => res.json());
   }
 

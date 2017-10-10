@@ -1,3 +1,5 @@
+import { ProductNewComponent } from './products/product-new/product-new.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { UserDetailsComponent } from './userprofile/user-details/user-details.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
@@ -17,6 +19,8 @@ export const routes: Routes = [
     { path: 'login',  component: LoginformComponent,  },
     { path: 'signup',  component: SignupformComponent,  },
     { path: 'products', component: ProductsComponent },
+    { path: 'products/new', component: ProductNewComponent },
     { path: 'products/:id', component: ProductDetailComponent },
+    { path: 'products/:id/edit', component: ProductEditComponent },
     { path: '**', redirectTo: '' }
 ];
