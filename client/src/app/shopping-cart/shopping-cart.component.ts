@@ -1,7 +1,9 @@
+import { DecimalPipe } from '@angular/common';
 import { ShoppingcartService } from './../services/shoppingcart.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,20 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  private product;
-  private shoppingCart: Array<any> = [];
+  private product: object;
+  public amount: Number = 0;
+
   constructor(
     private productService: ProductsService,
     private routes: ActivatedRoute,
-    private shoppingCartService: ShoppingcartService
-  ) { }
+    private shoppingCartService: ShoppingcartService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.shoppingCartService.getAmount();
     this.routes.params.subscribe(params => {
       this.getProductDetails(params['id']);
     });
-    this.shoppingCart = this.shoppingCartService.getShoppingCard();
-    console.log(this.shoppingCart);
   }
 
   getProductDetails(id) {
@@ -31,6 +34,10 @@ export class ShoppingCartComponent implements OnInit {
       .subscribe(product => {
         this.product = product;
       });
+  }
+
+  clear() {
+    this.shoppingCartService.clear();
   }
 
 }

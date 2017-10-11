@@ -4,8 +4,8 @@
 .card {
   position: relative;
   float: left;
-  width: 30%;
-  height: 100%;
+  /* width: 30%;
+  height: 100%; */
   border: 2px solid #337ab7;
   border-radius: 25px;
   margin: 15px;
@@ -14,4 +14,8 @@
 
 .incomplete {
   text-align: center;
+}
+
+.new-product{
+  margin: 10px;
 }

@@ -17,10 +17,10 @@
             <p>Price: {{product.price}} &euro; </p>
           </div>
           <div class="col-sm-6">
-            <p *ngIf="product.ecological == true">
+            <p *ngIf="product.ecological">
               <b>Ecological product</b>
             </p>
-            <p *ngIf="product.ecological == false">
+            <p *ngIf="!product.ecological">
               <b>Non ecological product</b>
             </p>
           </div>
