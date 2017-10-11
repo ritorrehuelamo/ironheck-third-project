@@ -1,3 +1,4 @@
+import { ShoppingcartService } from './services/shoppingcart.service';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { UserService } from './services/user.service';
 import { ProductsService } from './services/products.service';
@@ -21,6 +22,8 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { UserDetailsComponent } from './userprofile/user-details/user-details.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { ProductNewComponent } from './products/product-new/product-new.componen
     ProductDetailComponent,
     UserDetailsComponent,
     ProductEditComponent,
-    ProductNewComponent
+    ProductNewComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ import { ProductNewComponent } from './products/product-new/product-new.componen
     AuthService,
     IsLoggedInService,
     ProductsService,
-    UserService
+    UserService,
+    ShoppingcartService,
   ],
   bootstrap: [AppComponent]
 })

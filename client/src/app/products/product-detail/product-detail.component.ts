@@ -1,3 +1,4 @@
+import { ShoppingcartService } from './../../services/shoppingcart.service';
 import { AuthService } from './../../services/auth.service';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private routes: ActivatedRoute,
-    private auth: AuthService
+    private auth: AuthService,
+    private shoppingCart: ShoppingcartService
   ) {
     this.auth.isLoggedIn()
     .subscribe( user => this.user = user );
@@ -31,5 +33,9 @@ export class ProductDetailComponent implements OnInit {
   getProductDetails (id) {
     this.productService.getOne(id)
       .subscribe(product => this.product = product);
+  }
+
+  addShoppingItem() {
+    this.shoppingCart.addProduct(this.product);
   }
 }
