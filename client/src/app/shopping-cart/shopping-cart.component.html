@@ -1,0 +1,52 @@
+<div *ngIf="shoppingCartService.getShoppingCard().length > 0">
+  <div class="row">
+    <div class="col-sm-2">
+      <h4>
+        <b>Total</b>: {{shoppingCartService.getAmount() | number:'1.2'}} &euro;</h4>
+    </div>
+    <div class="col-sm-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Producer</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cart of shoppingCartService.getShoppingCard(); let i=index">
+            <th>{{i + 1}}</th>
+            <th>{{cart.product.name}}</th>
+            <th>{{cart.product.producer.username}}</th>
+            <th>{{cart.product.price}} &euro;</th>
+            <th>
+              <input type="number" [(ngModel)]="cart.quantity"> &euro;
+            </th>
+            <th>{{cart.product.price * cart.quantity | number:'1.2'}} &euro;</th>
+            <th>
+              <button class="btn btn-danger" (click)="shoppingCartService.deleteItem(cart.product._id)">Delete</button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-2">
+      <a class="btn btn-primary bt" [routerLink]="['/']">Buy</a>
+      <button (click)="clear()" class="btn btn-warning bt">Clear list</button>      
+      <a class="btn btn-primary bt" [routerLink]="['/products']">Product list</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="shoppingCartService.getShoppingCard().length == 0">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h2>Your shopping card is empty</h2>
+  </div>
+  <div class="col-sm-2">  
+    <a class="btn btn-primary" [routerLink]="['/products']">Product list</a>
+  </div>
+</div>

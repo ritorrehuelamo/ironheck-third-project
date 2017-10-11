@@ -1,18 +1,41 @@
-<div class="panel panel-primary">
-  <div class="panel-body">
-    <h2>{{product.name}}</h2>
-  </div>
-  <div class="panel-footer">
-    <div class="row">
-      <div class="col-sm-6">
-       <p>{{product.description}}</p>
-      </div>
-      <div class="col-sm-6">
-        <p><b>Producer: </b><i>{{product.producer.username}}</i></p>
-        <p>Price: {{product.price}} &euro; </p>
-        <p *ngIf="product.ecological == true"><b>Ecological product</b></p>
-        <p *ngIf="product.ecological == false"><b>Non ecological product</b></p>
+<div *ngIf="product">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <h2>{{product.name}}</h2>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>{{product.description}}</p>
+        </div>
+        <div class="col-sm-6">
+          <div class="col-sm-6">
+            <p>
+              <b>Producer: </b>
+              <i>{{product.producer.username}}</i>
+            </p>
+            <p>Price: {{product.price}} &euro; </p>
+          </div>
+          <div class="col-sm-6">
+            <p *ngIf="product.ecological">
+              <b>Ecological product</b>
+            </p>
+            <p *ngIf="!product.ecological">
+              <b>Non ecological product</b>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="user._id === product.producer._id" class="edit">
+    <a class="btn btn-primary" [routerLink]="['/products', product._id, 'edit']">Edit Product</a>
+    <a class="btn btn-primary" [routerLink]="['/products']">Back to Products</a>
+  </div>
+
+  <div *ngIf="user._id !== product.producer._id" class="edit">
+    <a class="btn btn-primary" (click)="addShoppingItem()" [routerLink]="['/products', product._id, 'buy']">Buy Product</a>
+    <a class="btn btn-primary" [routerLink]="['/products']">Back to Products</a>
   </div>
 </div>

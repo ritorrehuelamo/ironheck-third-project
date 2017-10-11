@@ -1,3 +1,5 @@
+import { ShoppingcartService } from './services/shoppingcart.service';
+import { NgDatepickerModule } from 'ng2-datepicker';
 import { UserService } from './services/user.service';
 import { ProductsService } from './services/products.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,13 +13,18 @@ import { HomeComponent } from './home/home.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { RouterModule } from '@angular/router';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
-import {routes} from './routes';
+import { routes } from './routes';
 import { SignupformComponent } from './signupform/signupform.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { UserDetailsComponent } from './userprofile/user-details/user-details.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { ProductNewComponent } from './products/product-new/product-new.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,19 +37,24 @@ import { UserDetailsComponent } from './userprofile/user-details/user-details.co
     FilterPipe,
     ProductsComponent,
     ProductDetailComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ProductEditComponent,
+    ProductNewComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgDatepickerModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
     AuthService,
     IsLoggedInService,
     ProductsService,
-    UserService
+    UserService,
+    ShoppingcartService,
   ],
   bootstrap: [AppComponent]
 })

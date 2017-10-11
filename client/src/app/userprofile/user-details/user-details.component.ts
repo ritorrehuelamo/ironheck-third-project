@@ -2,9 +2,7 @@ import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-
-
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-details',
@@ -22,7 +20,10 @@ export class UserDetailsComponent implements OnInit {
     address: '',
     phoneNumber: 0,
     companyName: '',
-    userType: ''
+    productionType: '',
+    userType: '',
+    seasonStarts: '',
+    seasonEnds: ''
   };
 
   constructor(
@@ -35,7 +36,6 @@ export class UserDetailsComponent implements OnInit {
     this.user = this.auth.getUser();
     this.auth.isLoggedIn()
       .subscribe(user => {
-        console.log(user.userType);
         this.editUser = {
           username: user.username,
           firstName: user.firstName,
@@ -44,7 +44,10 @@ export class UserDetailsComponent implements OnInit {
           address: user.address,
           phoneNumber: user.phoneNumber,
           companyName: user.companyName,
-          userType: user.userType
+          productionType: user.productionType,
+          userType: user.userType,
+          seasonStarts: user.seasonStarts,
+          seasonEnds: user.seasonEnds
         };
       });
   }

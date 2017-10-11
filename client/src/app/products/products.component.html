@@ -1,39 +1,47 @@
-<div class="search-container">
-  <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-      <div class="input-group">
-        <div *ngIf="!user.userType" class="alert alert-danger incomplete" role="alert">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          User profile is incomplete
+<div *ngIf="user">
+  <div class="search-container">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <div *ngIf="user" class="input-group">
+          <div *ngIf="!user.userType" class="alert alert-danger incomplete" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            User profile is incomplete
+          </div>
+          <div class="nav">
+            <ul class="nav nav-tabs">
+              <li role="presentation">
+                <a [routerLink]="['/products']">All products</a>
+              </li>
+              <li *ngIf="user.userType === 'provider'" role="presentation">
+                <a href="#">My products</a>
+              </li>
+            </ul>
+          </div>
+          <input class="search form-control" [(ngModel)]="searchInput" placeholder="Search...">
         </div>
-        <div class="nav">
-          <ul class="nav nav-tabs">
-            <li role="presentation"><a [routerLink]="['/products']">All products</a></li>
-            <li *ngIf="user.userType == 'provider'" role="presentation"><a href="#">My products</a></li>
-          </ul>
-        </div>
-        <input class="search form-control" [(ngModel)]="searchInput" placeholder="Search...">
       </div>
-    </div>
-    <div class="col-sm-2">
-      <div *ngIf="user.userType == 'provider'">
+      <div class="col-sm-2">
+        <a *ngIf="user.userType === 'provider'" [routerLink]="['/products', 'new']" class="btn btn-primary new-product">New Product</a>
       </div>
     </div>
   </div>
-</div>
-<div class="products" *ngFor="let product of products | filter:'name':searchInput">
-  <div class="card-group">
-    <div class="card">
-      <div class="card-block">
-        <img class="card-img-top" src="http://4vector.com/i/free-vector-wheat-pattern-02-vector_022936_2.jpg" alt="Product Image"
-          height="100" width="100">
-        <h4 class="card-title">{{product.name}}</h4>
-        <p class="card-text">{{product.description | truncate : 40}}</p>
-        <p class="card-text">Producer: {{product.producer.username}}</p>
-        <p class="card-text">Price: {{product.price}} &euro;</p>
-        <a class="btn btn-primary" [routerLink]="['/products', product._id]">View</a>
-      </div>
+  <div class="products" *ngFor="let product of products | filter:'name':searchInput">
+    <div class="col-sm-3">
+        <div class="card-group">
+            <div class="card">
+              <div class="card-block">
+                <img class="card-img-top" src="http://4vector.com/i/free-vector-wheat-pattern-02-vector_022936_2.jpg" alt="Product Image"
+                  height="100" width="100">
+                <h4 class="card-title">{{product.name}}</h4>
+                <p class="card-text">{{product.description | truncate : 40}}</p>
+                <p class="card-text">Producer: {{product.producer.username}}</p>
+                <p class="card-text">Price: {{product.price}} &euro;</p>
+                <a class="btn btn-primary" [routerLink]="['/products', product._id]">Details</a>
+              </div>
+            </div>
+          </div>
     </div>
   </div>
+
 </div>
