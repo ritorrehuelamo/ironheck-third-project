@@ -1,3 +1,4 @@
+import { OrderComponent } from './order/order.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
@@ -24,5 +25,6 @@ export const routes: Routes = [
     { path: 'products/:id', component: ProductDetailComponent },
     { path: 'products/:id/buy', component: ShoppingCartComponent },
     { path: 'products/:id/edit', component: ProductEditComponent },
+    { path: 'orders/:id/user', component: OrderComponent},
     { path: '**', redirectTo: '' }
 ];

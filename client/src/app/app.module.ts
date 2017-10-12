@@ -23,6 +23,7 @@ import { UserDetailsComponent } from './userprofile/user-details/user-details.co
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -41,6 +42,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ProductEditComponent,
     ProductNewComponent,
     ShoppingCartComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,19 +13,31 @@ interface CartItem {
 @Injectable()
 export class ShoppingcartService {
 
+  private orderByUser: Array<any> = [];
   private shoppingCart: Array<CartItem> = [];
   private totAmount = 0;
-  private saveItem: object = {
-    buyer: '',
-    producer: '',
-    product: [],
-    amount: 0,
-    totalPrice: 0
-  };
 
   constructor(
     private http: Http,
   ) { }
+
+  getByUserId(id) {
+    return this.http.get(`${BASEURL}/`);
+  }
+
+  confirmBuy(buyOrder) {
+    this.shoppingCart = [];
+    return this.http.post(`${BASEURL}/new`, buyOrder)
+      .map(res => {
+        res.json();
+        this.shoppingCart = [];
+      });
+  }
+
+  getOrderByUser (id) {
+    return this.http.get(`${BASEURL}/${id}/user`)
+      .map(res => res.json());
+  }
 
   addProduct(product) {
     this.totAmount = 0;
@@ -33,12 +45,19 @@ export class ShoppingcartService {
       product,
       quantity: 1
     });
+  }
+
+  saveShoppingCart() {
     this.shoppingCart.forEach(e => {
       this.totAmount += e.product.price * e.quantity;
     });
   }
 
-  getAmount() {
+  setAmount(price, quantity) {
+    console.log(price, quantity);
+  }
+
+  getAmount () {
     return this.totAmount;
   }
 
@@ -53,12 +72,4 @@ export class ShoppingcartService {
   deleteItem(id) {
     this.shoppingCart.splice(this.shoppingCart.map(e => e.product._id).indexOf(id), 1);
   }
-
-
-  // { buyer, producer, product, amount, totalPrice }
-  // saveShoppingCard(userId, providerId, products) {
-  //   this.http.post(`${BASEURL}/new`)
-  //     .subscribe();
-  // }
-
 }

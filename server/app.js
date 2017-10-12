@@ -64,9 +64,9 @@ app.use(passport.session());
 
 app.use('/', rootRouter)
 
-app.all((req, res, next) => {
-  res.sendfile(__dirname + '/public/index.html');
-});
+// app.all((req, res, next) => {
+//   res.sendfile(__dirname + '/public/index.html');
+// });
 
 app.use(function (req, res, next) {
   const err = new Error('Not Found')
