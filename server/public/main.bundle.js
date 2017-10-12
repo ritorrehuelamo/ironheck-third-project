@@ -848,7 +848,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASEURL = __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].BASEURL;
+var BASEURL = __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].BASEURL + "api";
 var AuthService = (function () {
     function AuthService(http, router) {
         this.http = http;
@@ -976,7 +976,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASEURL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].BASEURL + '/products';
+var BASEURL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].BASEURL + '/api/products';
 var ProductsService = (function () {
     function ProductsService(http) {
         this.http = http;
@@ -1034,7 +1034,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASEURL = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].BASEURL + '/orders';
+var BASEURL = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].BASEURL + '/api/orders';
 var ShoppingcartService = (function () {
     function ShoppingcartService(http) {
         this.http = http;
@@ -1103,7 +1103,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASEURL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].BASEURL + '/users';
+var BASEURL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].BASEURL + '/api/users';
 var UserService = (function () {
     function UserService(http) {
         this.http = http;

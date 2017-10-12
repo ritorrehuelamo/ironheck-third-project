@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
-const BASEURL: string = environment.BASEURL + '/users';
+const BASEURL: string = environment.BASEURL + '/api/users';
 
 @Injectable()
 export class UserService {

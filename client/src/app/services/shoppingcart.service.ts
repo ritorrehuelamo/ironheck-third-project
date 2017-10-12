@@ -2,7 +2,7 @@ import { environment } from './../../environments/environment';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-const BASEURL = environment.BASEURL + '/orders';
+const BASEURL = environment.BASEURL + '/api/orders';
 
 interface CartItem {
   product: any;

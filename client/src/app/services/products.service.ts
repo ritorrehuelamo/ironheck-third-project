@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
-const BASEURL = environment.BASEURL + '/products';
+const BASEURL = environment.BASEURL + '/api/products';
 
 @Injectable()
 export class ProductsService {
