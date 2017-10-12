@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http} from '@angular/http';
+// tslint:disable-next-line:import-blacklist
 import 'rxjs';
 import { Router } from '@angular/router';
 import {environment} from '../../environments/environment';
