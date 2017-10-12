@@ -2,7 +2,7 @@ import { ShoppingcartService } from './services/shoppingcart.service';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { UserService } from './services/user.service';
 import { ProductsService } from './services/products.service';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -57,6 +57,7 @@ import { OrderComponent } from './order/order.component';
     ProductsService,
     UserService,
     ShoppingcartService,
+    Title
   ],
   bootstrap: [AppComponent]
 })

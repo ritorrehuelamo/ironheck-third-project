@@ -42,7 +42,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(cookieParser())
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({
   secret: 'LocalMarket',
@@ -64,9 +64,9 @@ app.use(passport.session());
 
 app.use('/', rootRouter)
 
-app.all((req, res, next) => {
-  res.sendfile(__dirname + '/public/index.html');
-});
+// app.all((req, res, next) => {
+//   res.sendfile(__dirname + '/public/index.html');
+// });
 
 app.use(function (req, res, next) {
   const err = new Error('Not Found')

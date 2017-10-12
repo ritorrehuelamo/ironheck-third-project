@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import {
   Component,
   OnInit
@@ -18,7 +19,10 @@ export class SignupformComponent implements OnInit {
     password: ''
   };
 
-  constructor(public auth: AuthService) {}
+
+  constructor(
+    public auth: AuthService,
+  ) {}
 
   ngOnInit() {}
 

@@ -1,3 +1,5 @@
+import { AppComponent } from './../app.component';
+import { Title } from '@angular/platform-browser';
 import { TruncatePipe } from './../pipes/truncate.pipe';
 import { ShoppingcartService } from './../services/shoppingcart.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,7 +19,6 @@ export class OrderComponent implements OnInit {
     private routes: ActivatedRoute,
     private shoppingCartService: ShoppingcartService
   ) { }
-
   ngOnInit() {
     this.routes.params.subscribe(params => {
       this.getOrdersDetails(params['id']);
