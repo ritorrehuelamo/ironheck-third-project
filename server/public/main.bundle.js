@@ -979,25 +979,26 @@ var BASEURL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* env
 var ProductsService = (function () {
     function ProductsService(http) {
         this.http = http;
+        this.options = { withCredentials: true };
     }
     ProductsService.prototype.getList = function () {
-        return this.http.get(BASEURL + "/")
+        return this.http.get(BASEURL + "/", this.options)
             .map(function (res) { return res.json(); });
     };
     ProductsService.prototype.getOne = function (id) {
-        return this.http.get(BASEURL + "/" + id)
+        return this.http.get(BASEURL + "/" + id, this.options)
             .map(function (res) { return res.json(); });
     };
     ProductsService.prototype.createNewProduct = function (product) {
-        return this.http.post(BASEURL + "/new", product)
+        return this.http.post(BASEURL + "/new", product, this.options)
             .map(function (res) { return res.json(); });
     };
     ProductsService.prototype.updateProduct = function (id, product) {
-        return this.http.put(BASEURL + "/" + id + "/edit", product)
+        return this.http.put(BASEURL + "/" + id + "/edit", product, this.options)
             .map(function (res) { return res.json(); });
     };
     ProductsService.prototype.deleteProduct = function (id) {
-        return this.http.delete(BASEURL + "/" + id + "/delete")
+        return this.http.delete(BASEURL + "/" + id + "/delete", this.options)
             .map(function (res) { return res.json(); });
     };
     return ProductsService;
@@ -1032,12 +1033,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASEURL = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].BASEURL;
+var BASEURL = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].BASEURL + '/orders';
 var ShoppingcartService = (function () {
     function ShoppingcartService(http) {
         this.http = http;
         this.shoppingCart = [];
         this.totAmount = 0;
+        this.saveItem = {
+            buyer: '',
+            producer: '',
+            product: [],
+            amount: 0,
+            totalPrice: 0
+        };
     }
     ShoppingcartService.prototype.addProduct = function (product) {
         var _this = this;
@@ -1061,8 +1069,6 @@ var ShoppingcartService = (function () {
     };
     ShoppingcartService.prototype.deleteItem = function (id) {
         this.shoppingCart.splice(this.shoppingCart.map(function (e) { return e.product._id; }).indexOf(id), 1);
-    };
-    ShoppingcartService.prototype.saveShoppingCard = function () {
     };
     return ShoppingcartService;
 }());
@@ -1138,7 +1144,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/shopping-cart/shopping-cart.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"shoppingCartService.getShoppingCard().length > 0\">\n  <div class=\"row\">\n    <div class=\"col-sm-2\">\n      <h4>\n        <b>Total</b>: {{shoppingCartService.getAmount() | number:'1.2'}} &euro;</h4>\n    </div>\n    <div class=\"col-sm-8\">\n      <table class=\"table\">\n        <thead>\n          <tr>\n            <th>#</th>\n            <th>Product</th>\n            <th>Producer</th>\n            <th>Price</th>\n            <th>Quantity</th>\n            <th>Total</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let cart of shoppingCartService.getShoppingCard(); let i=index\">\n            <th>{{i + 1}}</th>\n            <th>{{cart.product.name}}</th>\n            <th>{{cart.product.producer.username}}</th>\n            <th>{{cart.product.price}} &euro;</th>\n            <th>\n              <input type=\"number\" [(ngModel)]=\"cart.quantity\"> &euro;\n            </th>\n            <th>{{cart.product.price * cart.quantity | number:'1.2'}} &euro;</th>\n            <th>\n              <button class=\"btn btn-danger\" (click)=\"shoppingCartService.deleteItem(cart.product._id)\">Delete</button>\n            </th>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <div class=\"col-sm-2\">\n      <a class=\"btn btn-primary bt\" [routerLink]=\"['/']\">Buy</a>\n      <button (click)=\"clear()\" class=\"btn btn-warning bt\">Clear list</button>      \n      <a class=\"btn btn-primary bt\" [routerLink]=\"['/products']\">Product list</a>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"shoppingCartService.getShoppingCard().length == 0\">\n  <div class=\"col-sm-2\"></div>\n  <div class=\"col-sm-8\">\n    <h2>Your shopping card is empty</h2>\n  </div>\n  <div class=\"col-sm-2\">  \n    <a class=\"btn btn-primary\" [routerLink]=\"['/products']\">Product list</a>\n  </div>\n</div>\n"
+module.exports = "<div *ngIf=\"shoppingCartService.getShoppingCard().length > 0\">\n  <div class=\"row\">\n    <div class=\"col-sm-2\">\n      <h4>\n        <b>Total</b>: {{shoppingCartService.getAmount() | number:'1.2'}} &euro;</h4>\n    </div>\n    <div class=\"col-sm-8\">\n      <table class=\"table\">\n        <thead>\n          <tr>\n            <th>#</th>\n            <th>Product</th>\n            <th>Producer</th>\n            <th>Price</th>\n            <th>Quantity</th>\n            <th>Total</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let cart of shoppingCartService.getShoppingCard(); let i=index\">\n            <th>{{i + 1}}</th>\n            <th>{{cart.product.name}}</th>\n            <th>{{cart.product.producer.username}}</th>\n            <th>{{cart.product.price}} &euro;</th>\n            <th>\n              <input type=\"number\" [(ngModel)]=\"cart.quantity\"> &euro;\n            </th>\n            <th>{{cart.product.price * cart.quantity | number:'1.2'}} &euro;</th>\n            <th>\n              <button class=\"btn btn-danger\" (click)=\"shoppingCartService.deleteItem(cart.product._id)\">\n                <span class=\"glyphicon glyphicon-remove\"></span>\n              </button>\n            </th>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <div class=\"col-sm-2\">\n      <a class=\"btn btn-primary bt\" [routerLink]=\"['/']\">Buy</a>\n      <button (click)=\"clear()\" class=\"btn btn-warning bt\">Clear list</button>\n      <a class=\"btn btn-primary bt\" [routerLink]=\"['/products']\">Product list</a>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"shoppingCartService.getShoppingCard().length == 0\">\n  <div class=\"col-sm-2\"></div>\n  <div class=\"col-sm-8\">\n    <h2>Your shopping card is empty</h2>\n  </div>\n  <div class=\"col-sm-2\">\n    <a class=\"btn btn-primary bt\" [routerLink]=\"['/products']\">Product list</a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1472,15 +1478,15 @@ var _a;
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
+// export const environment = {
+//   production: false,
+//   BASEURL: 'http://localhost:3000/api'
+// };
 // The file contents for the current environment will overwrite these during build.
 var environment = {
-    production: false,
-    BASEURL: 'http://localhost:3000/api'
+    production: true,
+    BASEURL: ''
 };
-// export const environment = {
-//   production: true,
-//   BASEURL: ''
-// };
 //# sourceMappingURL=environment.js.map
 
 /***/ }),
