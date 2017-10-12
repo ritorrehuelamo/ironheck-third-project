@@ -2,7 +2,7 @@ import { environment } from './../../environments/environment';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-const BASEURL = environment.BASEURL;
+const BASEURL = environment.BASEURL + '/orders';
 
 interface CartItem {
   product: any;
@@ -10,12 +10,18 @@ interface CartItem {
 }
 
 
-
 @Injectable()
 export class ShoppingcartService {
 
   private shoppingCart: Array<CartItem> = [];
   private totAmount = 0;
+  private saveItem: object = {
+    buyer: '',
+    producer: '',
+    product: [],
+    amount: 0,
+    totalPrice: 0
+  };
 
   constructor(
     private http: Http,
@@ -48,8 +54,11 @@ export class ShoppingcartService {
     this.shoppingCart.splice(this.shoppingCart.map(e => e.product._id).indexOf(id), 1);
   }
 
-  saveShoppingCard() {
 
-  }
+  // { buyer, producer, product, amount, totalPrice }
+  // saveShoppingCard(userId, providerId, products) {
+  //   this.http.post(`${BASEURL}/new`)
+  //     .subscribe();
+  // }
 
 }

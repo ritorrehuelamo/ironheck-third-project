@@ -27,7 +27,9 @@
             </th>
             <th>{{cart.product.price * cart.quantity | number:'1.2'}} &euro;</th>
             <th>
-              <button class="btn btn-danger" (click)="shoppingCartService.deleteItem(cart.product._id)">Delete</button>
+              <button class="btn btn-danger" (click)="shoppingCartService.deleteItem(cart.product._id)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
             </th>
           </tr>
         </tbody>
@@ -35,7 +37,7 @@
     </div>
     <div class="col-sm-2">
       <a class="btn btn-primary bt" [routerLink]="['/']">Buy</a>
-      <button (click)="clear()" class="btn btn-warning bt">Clear list</button>      
+      <button (click)="clear()" class="btn btn-warning bt">Clear list</button>
       <a class="btn btn-primary bt" [routerLink]="['/products']">Product list</a>
     </div>
   </div>
@@ -46,7 +48,7 @@
   <div class="col-sm-8">
     <h2>Your shopping card is empty</h2>
   </div>
-  <div class="col-sm-2">  
-    <a class="btn btn-primary" [routerLink]="['/products']">Product list</a>
+  <div class="col-sm-2">
+    <a class="btn btn-primary bt" [routerLink]="['/products']">Product list</a>
   </div>
 </div>
