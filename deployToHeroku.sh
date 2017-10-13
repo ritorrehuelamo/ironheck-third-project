@@ -2,7 +2,7 @@
 cd client
 rm -rf dist
 echo 'Building client...'
-ng build -e prod
+ng build --env=prod
 cd ..
 echo "Copy files to public..."
 rm -rf ./server/public
