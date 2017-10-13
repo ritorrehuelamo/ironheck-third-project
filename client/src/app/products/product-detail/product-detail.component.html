@@ -30,12 +30,12 @@
   </div>
 
   <div *ngIf="user._id === product.producer._id" class="edit">
-    <a class="btn btn-primary" [routerLink]="['/products', product._id, 'edit']">Edit Product</a>
-    <a class="btn btn-primary" [routerLink]="['/products']">Back to Products</a>
+    <a class="btn bt" [routerLink]="['/products', product._id, 'edit']">Edit Product</a>
+    <a class="btn bt" [routerLink]="['/products']">Back to Products</a>
   </div>
 
   <div *ngIf="user._id !== product.producer._id" class="edit">
-    <a class="btn btn-primary" (click)="addShoppingItem()" [routerLink]="['/products', product._id, 'buy']">Buy Product</a>
-    <a class="btn btn-primary" [routerLink]="['/products']">Back to Products</a>
+    <a class="btn bt" (click)="addShoppingItem()" [routerLink]="['/products', product._id, 'buy']">Buy Product</a>
+    <a class="btn bt" [routerLink]="['/products']">Back to Products</a>
   </div>
 </div>

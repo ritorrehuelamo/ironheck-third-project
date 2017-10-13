@@ -13,3 +13,8 @@ p {
 /* .panel-footer {
   text-align: center !important;
 } */
+
+.panel-heading {
+  background-color: #bcffdb;
+  color: #000000;
+}

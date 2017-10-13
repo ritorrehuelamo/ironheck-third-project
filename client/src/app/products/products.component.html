@@ -8,21 +8,11 @@
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             User profile is incomplete
           </div>
-          <div class="nav">
-            <ul class="nav nav-tabs">
-              <li role="presentation">
-                <a [routerLink]="['/products']">All products</a>
-              </li>
-              <li *ngIf="user.userType === 'provider'" role="presentation">
-                <a href="#">My products</a>
-              </li>
-            </ul>
-          </div>
           <input class="search form-control" [(ngModel)]="searchInput" placeholder="Search...">
         </div>
       </div>
       <div class="col-sm-2">
-        <a *ngIf="user.userType === 'provider'" [routerLink]="['/products', 'new']" class="btn btn-primary new-product">New Product</a>
+        <a *ngIf="user.userType === 'provider'" [routerLink]="['/products', 'new']" class="btn bt new-product">New Product</a>
       </div>
     </div>
   </div>
@@ -31,13 +21,13 @@
       <div class="card-group">
         <div class="card">
           <div class="card-block">
-            <img class="card-img-top" src="http://4vector.com/i/free-vector-wheat-pattern-02-vector_022936_2.jpg" alt="Product Image"
+            <img class=" img-responsive card-img-top" src="http://4vector.com/i/free-vector-wheat-pattern-02-vector_022936_2.jpg" alt="Product Image"
               height="100" width="100">
             <h4 class="card-title">{{product.name}}</h4>
             <p class="card-text">{{product.description | truncate : 40}}</p>
             <p class="card-text">Producer: {{product.producer.username}}</p>
             <p class="card-text">Price: {{product.price}} &euro;</p>
-            <a class="btn btn-primary" [routerLink]="['/products', product._id]">Details</a>
+            <a class="btn bt" [routerLink]="['/products', product._id]">Details</a>
           </div>
         </div>
       </div>

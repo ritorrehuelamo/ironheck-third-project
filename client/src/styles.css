@@ -1,10 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
 .bt {
   width: 100%;
   text-align: center;
   margin: 5px;
+  background-color: #68d89b;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 
+}
+
+.bt:hover {
+  color: #4f9d69;
 }
 
 .card {
   height: 100%;
+}
+
+body {
+  font-family: 'Dosis', sans-serif;
+}
+
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
 }

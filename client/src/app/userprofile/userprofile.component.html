@@ -9,12 +9,12 @@
     </div>
     <div class="col-sm-8">
       <div class="panel panel-primary">
-        <div class="panel-body">
+        <div class="panel-heading">
           <h2>User 
             <b>{{user.username}}</b>
           </h2>
         </div>
-        <div class="panel-footer">
+        <div class="panel-body">
           <div class="row">
             <div class="col-sm-4">
                 <p *ngIf="user.firstName && user.lastName"><b>Name</b> {{user.firstName}} {{user.lastName}}</p>
@@ -45,8 +45,8 @@
       </div>
     </div>
     <div class="col-sm-2">
-      <a class="btn btn-primary bt" [routerLink]="['/user', 'profile']">User profile</a>
-      <a class="btn btn-primary bt" [routerLink]="['']">Back to Home</a>
+      <a class="btn bt" [routerLink]="['/user', 'profile']">User profile</a>
+      <a class="btn bt" [routerLink]="['']">Back to Home</a>
     </div>
   </div>
 </div>

@@ -20,11 +20,11 @@ export const routes: Routes = [
     { path: 'user/profile', component: UserDetailsComponent, canActivate: [IsLoggedInService] },
     { path: 'login',  component: LoginformComponent,  },
     { path: 'signup',  component: SignupformComponent,  },
-    { path: 'products', component: ProductsComponent },
-    { path: 'products/new', component: ProductNewComponent },
-    { path: 'products/:id', component: ProductDetailComponent },
-    { path: 'products/:id/buy', component: ShoppingCartComponent },
-    { path: 'products/:id/edit', component: ProductEditComponent },
-    { path: 'orders/:id/user', component: OrderComponent},
+    { path: 'products', component: ProductsComponent, canActivate: [ IsLoggedInService ] },
+    { path: 'products/new', component: ProductNewComponent, canActivate: [ IsLoggedInService ] },
+    { path: 'products/:id', component: ProductDetailComponent, canActivate: [ IsLoggedInService ] },
+    { path: 'products/:id/buy', component: ShoppingCartComponent, canActivate: [ IsLoggedInService ] },
+    { path: 'products/:id/edit', component: ProductEditComponent, canActivate: [ IsLoggedInService ] },
+    { path: 'orders/:id/user', component: OrderComponent, canActivate: [ IsLoggedInService ]},
     { path: '**', redirectTo: '' }
 ];

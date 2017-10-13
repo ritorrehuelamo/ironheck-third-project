@@ -1,0 +1,35 @@
+.navbar {
+  background-color: #68d89b;
+  color: #ffffff !important;
+}
+
+.dropdown-menu {
+  background-color: #68d89b !important;
+}
+
+.drop:hover {
+  background-color: #68d89b !important;
+  color: #4f9d69 !important;
+}
+
+.dropdown.open>a{
+  background-color: #68d89b !important;
+  color: #4f9d69 !important;
+}
+
+a {
+  color: #fff !important;
+}
+
+a:hover {
+  color: #4f9d69 !important;
+}
+
+.navbar-toggle:hover {
+  background-color: #ffffff;
+}
+
+.nav-a {
+  font-weight: 600;
+  font-size: 25px;
+}
