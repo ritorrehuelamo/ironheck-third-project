@@ -1,5 +1,20 @@
 const Order = require('../models/Order')
-const ObjectId = require('mongodb').ObjectID;
+
+
+const generateNewOrder = (buyer, producer, products, totalPrice) => {
+  return new Order({
+    buyer, producer, products, totalPrice
+  })
+}
+
+const updateOrderObject = (buyer, producer, product, amount, totalPrice) => {
+  return {
+    'buyer': buyer,
+    'producer': producer,
+    'products': product,
+    'totalPrice': totalPrice
+  }
+}
 
 module.exports = {
   getAll: (req, res, next) => {
@@ -19,22 +34,16 @@ module.exports = {
   },
   newOrder: (req, res, next) => {
     const { buyer, producer, products, totalPrice } = req.body
-    const newOrder = new Order({
-      buyer, producer, products, totalPrice
-    }).save()
-    .then(order => {
-      res.status(200).json({message: 'Your order was created'})
-    }).catch(e => res.status(500).json({message: 'Error when try to create new order'}))
+    
+    generateNewOrder(buyer, producer, products, totalPrice).save()
+    .then(order => res.status(200).json({message: 'Your order was created'}))
+    .catch(e => res.status(500).json({message: 'Error when try to create new order'}))
   },
   editOrder: (req, res, next) => {
     const { buyer, producer, product, amount, totalPrice } = req.body
+
     Order.findByIdAndUpdate(req.params.id,{
-      $set: {
-        'buyer': buyer,
-        'producer': producer,
-        'products': product,
-        'totalPrice': totalPrice
-      }
+      $set: updateOrderObject(buyer, producer, product, amount, totalPrice)
     }, {new: true}).exec()
     .then(order => res.status(200).json(order))
     .catch(e => res.status(500).json('Error when try to update an order'))

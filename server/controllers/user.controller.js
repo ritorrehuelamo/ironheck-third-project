@@ -1,5 +1,21 @@
 const User = require('../models/User')
-const bcrypt = require('bcrypt')
+
+const updateUserObject = (username, firstName, lastName, email, address, phoneNumber, image, userType, companyName, productionType, seasonStarts, seasonEnds) => {
+  return {
+    'username': username, 
+    'firstName': firstName, 
+    'lastName': lastName, 
+    'email': email, 
+    'address': address, 
+    'phoneNumber': phoneNumber, 
+    'image': image, 
+    'userType': userType, 
+    'companyName': companyName, 
+    'productionType': productionType, 
+    'seasonStarts': seasonStarts, 
+    'seasonEnds': seasonEnds
+  }
+}
 
 module.exports = {
   getAll: (req, res, next) => {
@@ -14,26 +30,11 @@ module.exports = {
   },
   editUser: (req, res, next) => {
     const {username, firstName, lastName, email, address, phoneNumber, image, userType, companyName, productionType, seasonStarts, seasonEnds} = req.body
+
     User.findByIdAndUpdate(req.params.id,{
-      $set: {
-        'username': username, 
-        'firstName': firstName, 
-        'lastName': lastName, 
-        'email': email, 
-        'address': address, 
-        'phoneNumber': phoneNumber, 
-        'image': image, 
-        'userType': userType, 
-        'companyName': companyName, 
-        'productionType': productionType, 
-        'seasonStarts': seasonStarts, 
-        'seasonEnds': seasonEnds
-      }},
-      {new: true}).exec()
-    .then(user => {
-      console.log(user)
-      res.status(200).json(user)
-    })
+      $set: updateUserObject(username, firstName, lastName, email, address, phoneNumber, image, userType, companyName, productionType, seasonStarts, seasonEnds)
+    },{new: true}).exec()
+    .then(user => res.status(200).json(user))
     .catch(e => res.status(500).json({message: `Error updating user -> ${e}`}))
   },
   deleteUser: (req, res, next) => {
