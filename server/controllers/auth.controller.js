@@ -2,6 +2,17 @@ const bcrypt = require('bcrypt')
 const User = require('../models/User')
 const passport = require('passport')
 
+const encSalt = bcrypt.genSaltSync(10)
+
+const generateNewUser = (username, hashPass, email) => {
+  return new User({
+    username,
+    password: hashPass,
+    email
+  })
+}
+
+
 module.exports = {
   signup: (req, res, next) => {
     const {username, password, email} = req.body
@@ -10,15 +21,11 @@ module.exports = {
     
     User.findOne({username}, '_id').exec()
       .then(user => {
-        if (user) return res.status(400).json({message: 'The username already exists'})
+        if (user) return res.status(409).json({message: 'The username already exists'})
         
-        const salt = bcrypt.genSaltSync(10)
-        const hashPass = bcrypt.hashSync(password, salt)
-        const newUser = new User({
-          username,
-          password: hashPass,
-          email
-        })
+        const hashPass = bcrypt.hashSync(password, encSalt)
+        const newUser = generateNewUser(username, hashPass, email)
+
         return newUser.save()
           .then(user => {
             req.login(user, (err) => {
@@ -36,6 +43,7 @@ module.exports = {
     passport.authenticate('local', (err, user, failureDetails) => {
       if(err) return res.status(500).json({message: 'Something went wrong'})
       if(!user) return res.status(401).json({message: 'Username does not exist'})
+      
       req.login(user, (err) => {
         if(err) return res.status(500).json({message: 'Something went wrong'})
         res.status(200).json(req.user)
