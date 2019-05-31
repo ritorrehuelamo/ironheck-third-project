@@ -1,11 +1,12 @@
 # This is an example with only required properties:
 version: 1
 update_configs:
-  - directory: "/server"
+  - directory: "/server/"
     update_schedule: "weekly"
     default_labels:
     - "dependencies"
     - "dependabot"
+    target_branch: "develop"
   - package_manager: "javascript"
     directory: "/"
     update_schedule: "live"
