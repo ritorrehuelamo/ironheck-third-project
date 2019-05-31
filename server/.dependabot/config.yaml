@@ -1,6 +1,0 @@
-version: 1
-update_configs: 
-  # required properties omitted ...
-  allowed_updates:
-  - match:
-      update_type: "security"

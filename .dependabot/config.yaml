@@ -1,0 +1,9 @@
+version: 1
+update_configs: 
+  # required properties omitted ...
+  - package_manager: "javascript"
+    directory: "./server/"
+    update_schedule: "live"
+allowed_updates:
+  - match:
+      update_type: "security"
