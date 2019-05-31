@@ -4,6 +4,3 @@ update_configs:
   - package_manager: "javascript"
     directory: "./server/"
     update_schedule: "live"
-allowed_updates:
-  - match:
-      update_type: "security"
