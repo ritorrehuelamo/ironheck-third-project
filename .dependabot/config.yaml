@@ -1,6 +1,17 @@
+# This is an example with only required properties:
 version: 1
-update_configs: 
-  # required properties omitted ...
+update_configs:
+  - directory: "/server"
+    update_schedule: "weekly"
+    default_labels:
+    - "dependencies"
+    - "dependabot"
   - package_manager: "javascript"
-    directory: "./server/"
+    directory: "/"
     update_schedule: "live"
+    allowed_updates:
+      - match:
+          # Only includes indirect (aka transient/sub-dependencies) for
+          # supported package managers: ruby:bundler, python, go:modules,
+          #                             php:composer, rust:cargo
+          update_type: "all"
